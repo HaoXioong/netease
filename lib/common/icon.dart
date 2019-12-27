@@ -10,5 +10,11 @@ class AntdIcons {
   static const IconData cloud = IconData(0xe622, fontFamily: 'AntdIcons');
 
   static const IconData account = IconData(0xe61d, fontFamily: 'AntdIcons');
+
+  static const IconData voice = IconData(0xe606, fontFamily: 'AntdIcons');
+
+  static const IconData playing = IconData(0xe61c, fontFamily: 'AntdIcons');
+
+  static const IconData search = IconData(0xe627, fontFamily: 'AntdIcons');
   
 }
