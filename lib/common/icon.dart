@@ -16,5 +16,15 @@ class AntdIcons {
   static const IconData playing = IconData(0xe61c, fontFamily: 'AntdIcons');
 
   static const IconData search = IconData(0xe627, fontFamily: 'AntdIcons');
+
+  static const IconData calender = IconData(0xe66b, fontFamily: 'AntdIcons');
+
+  static const IconData list = IconData(0xe637, fontFamily: 'AntdIcons');
+
+  static const IconData rank = IconData(0xe642, fontFamily: 'AntdIcons');
+
+  static const IconData fm = IconData(0xe636, fontFamily: 'AntdIcons');
+
+  static const IconData live = IconData(0xe6e3, fontFamily: 'AntdIcons');
   
 }

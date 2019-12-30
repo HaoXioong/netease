@@ -1,138 +1,71 @@
-class BannersList {
+import 'package:json_annotation/json_annotation.dart'; 
+  
+part 'banner.g.dart';
+
+
+@JsonSerializable()
+  class Banner {
+
+  @JsonKey(name: 'banners')
   List<Banners> banners;
+
+  @JsonKey(name: 'code')
   int code;
 
-  BannersList({this.banners, this.code});
+  Banner(this.banners,this.code,);
 
-  BannersList.fromJson(Map<String, dynamic> json) {
-    if (json['banners'] != null) {
-      banners = new List<Banners>();
-      json['banners'].forEach((v) {
-        banners.add(new Banners.fromJson(v));
-      });
-    }
-    code = json['code'];
-  }
+  factory Banner.fromJson(Map<String, dynamic> srcJson) => _$BannerFromJson(srcJson);
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.banners != null) {
-      data['banners'] = this.banners.map((v) => v.toJson()).toList();
-    }
-    data['code'] = this.code;
-    return data;
-  }
 }
 
-class Banners {
-  String imageUrl;
+  
+@JsonSerializable()
+  class Banners {
+
+  @JsonKey(name: 'pic')
+  String pic;
+
+  @JsonKey(name: 'targetId')
   int targetId;
-  Null adid;
+
+  @JsonKey(name: 'targetType')
   int targetType;
+
+  @JsonKey(name: 'titleColor')
   String titleColor;
+
+  @JsonKey(name: 'typeTitle')
   String typeTitle;
-  Null url;
+
+  @JsonKey(name: 'url')
+  String url;
+
+  @JsonKey(name: 'exclusive')
   bool exclusive;
-  Null monitorImpress;
-  Null monitorClick;
-  Null monitorType;
-  Null monitorImpressList;
-  Null monitorClickList;
-  Null monitorBlackList;
-  Null extMonitor;
-  Null extMonitorInfo;
-  Null adSource;
-  Null adLocation;
-  Null adDispatchJson;
+
+  @JsonKey(name: 'monitorImpressList')
+  List<dynamic> monitorImpressList;
+
+  @JsonKey(name: 'monitorClickList')
+  List<dynamic> monitorClickList;
+
+  @JsonKey(name: 'encodeId')
   String encodeId;
-  Null program;
-  Null event;
-  Null video;
-  Null song;
+
+  @JsonKey(name: 'bannerId')
+  String bannerId;
+
+  @JsonKey(name: 'scm')
   String scm;
 
-  Banners(
-      {this.imageUrl,
-      this.targetId,
-      this.adid,
-      this.targetType,
-      this.titleColor,
-      this.typeTitle,
-      this.url,
-      this.exclusive,
-      this.monitorImpress,
-      this.monitorClick,
-      this.monitorType,
-      this.monitorImpressList,
-      this.monitorClickList,
-      this.monitorBlackList,
-      this.extMonitor,
-      this.extMonitorInfo,
-      this.adSource,
-      this.adLocation,
-      this.adDispatchJson,
-      this.encodeId,
-      this.program,
-      this.event,
-      this.video,
-      this.song,
-      this.scm});
+  @JsonKey(name: 'requestId')
+  String requestId;
 
-  Banners.fromJson(Map<String, dynamic> json) {
-    imageUrl = json['imageUrl'];
-    targetId = json['targetId'];
-    adid = json['adid'];
-    targetType = json['targetType'];
-    titleColor = json['titleColor'];
-    typeTitle = json['typeTitle'];
-    url = json['url'];
-    exclusive = json['exclusive'];
-    monitorImpress = json['monitorImpress'];
-    monitorClick = json['monitorClick'];
-    monitorType = json['monitorType'];
-    monitorImpressList = json['monitorImpressList'];
-    monitorClickList = json['monitorClickList'];
-    monitorBlackList = json['monitorBlackList'];
-    extMonitor = json['extMonitor'];
-    extMonitorInfo = json['extMonitorInfo'];
-    adSource = json['adSource'];
-    adLocation = json['adLocation'];
-    adDispatchJson = json['adDispatchJson'];
-    encodeId = json['encodeId'];
-    program = json['program'];
-    event = json['event'];
-    video = json['video'];
-    song = json['song'];
-    scm = json['scm'];
-  }
+  @JsonKey(name: 'showAdTag')
+  bool showAdTag;
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['imageUrl'] = this.imageUrl;
-    data['targetId'] = this.targetId;
-    data['adid'] = this.adid;
-    data['targetType'] = this.targetType;
-    data['titleColor'] = this.titleColor;
-    data['typeTitle'] = this.typeTitle;
-    data['url'] = this.url;
-    data['exclusive'] = this.exclusive;
-    data['monitorImpress'] = this.monitorImpress;
-    data['monitorClick'] = this.monitorClick;
-    data['monitorType'] = this.monitorType;
-    data['monitorImpressList'] = this.monitorImpressList;
-    data['monitorClickList'] = this.monitorClickList;
-    data['monitorBlackList'] = this.monitorBlackList;
-    data['extMonitor'] = this.extMonitor;
-    data['extMonitorInfo'] = this.extMonitorInfo;
-    data['adSource'] = this.adSource;
-    data['adLocation'] = this.adLocation;
-    data['adDispatchJson'] = this.adDispatchJson;
-    data['encodeId'] = this.encodeId;
-    data['program'] = this.program;
-    data['event'] = this.event;
-    data['video'] = this.video;
-    data['song'] = this.song;
-    data['scm'] = this.scm;
-    return data;
-  }
+  Banners(this.pic,this.targetId,this.targetType,this.titleColor,this.typeTitle,this.url,this.exclusive,this.monitorImpressList,this.monitorClickList,this.encodeId,this.bannerId,this.scm,this.requestId,this.showAdTag,);
+
+  factory Banners.fromJson(Map<String, dynamic> srcJson) => _$BannersFromJson(srcJson);
+
 }
