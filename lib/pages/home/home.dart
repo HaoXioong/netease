@@ -43,7 +43,8 @@ class _HomePageState extends State<HomePage> {
                   _header(),
                   _banner(),
                   _icons(),
-                  _songs()           
+                  _songs(),
+                  _newest()           
                 ],
               ),
             )
@@ -131,7 +132,16 @@ class _HomePageState extends State<HomePage> {
             );
           },
           autoplay: true,
-          itemCount: bannerList.length
+          itemCount: bannerList.length,
+          pagination: new SwiperPagination(
+            margin: new EdgeInsets.fromLTRB(0.0, 0.0, 0.0, ScreenUtil.getInstance().setHeight(8)),
+            builder: new DotSwiperPaginationBuilder(
+                color: grey1,
+                activeColor: red,
+                size: ScreenUtil.getInstance().setSp(12),
+                activeSize: ScreenUtil.getInstance().setSp(12)
+              )
+          ),
         ),
       )
     );
@@ -351,6 +361,15 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       )      
+    );
+  }
+
+  Widget _newest(){
+    return(
+      Container(
+        padding: EdgeInsets.only(left: ScreenUtil.getInstance().setWidth(25), right: ScreenUtil.getInstance().setWidth(25)),
+        
+      )
     );
   }
 
