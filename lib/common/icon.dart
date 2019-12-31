@@ -27,4 +27,5 @@ class AntdIcons {
 
   static const IconData live = IconData(0xe6e3, fontFamily: 'AntdIcons');
   
+  static const IconData playCount = IconData(0xe769, fontFamily: 'AntdIcons');
 }

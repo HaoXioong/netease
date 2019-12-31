@@ -140,8 +140,8 @@ class _HomePageState extends State<HomePage> {
   Widget _icons(){
     return(
       Container(
-        padding: EdgeInsets.only(left: ScreenUtil.getInstance().setWidth(25), right: ScreenUtil.getInstance().setWidth(25), bottom: ScreenUtil.getInstance().setHeight(25)),
-        margin: EdgeInsets.only(top: ScreenUtil.getInstance().setHeight(25)),
+        padding: EdgeInsets.only(left: ScreenUtil.getInstance().setWidth(25), right: ScreenUtil.getInstance().setWidth(25), bottom: ScreenUtil.getInstance().setHeight(30)),
+        margin: EdgeInsets.only(top: ScreenUtil.getInstance().setHeight(30)),
         decoration: BoxDecoration(
           border: Border(bottom: BorderSide(width: 0.5, color: Color(0xffdddddd)))
         ),
@@ -251,39 +251,106 @@ class _HomePageState extends State<HomePage> {
 
   Widget _songs(){
     return(
-      GridView.builder(
-        shrinkWrap: true,
-        itemCount: songsList.length,
-        physics: NeverScrollableScrollPhysics(),
-        padding: EdgeInsets.symmetric(horizontal: 16),
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 3,
-          mainAxisSpacing: 10,
-          crossAxisSpacing: 10,
-          childAspectRatio: 1,
-        ),
-        itemBuilder: (context, index) {
-          return InkWell(
-            onTap: (){},
-            child: Container(
-              width: ScreenUtil.getInstance().setWidth(120),
-              height: ScreenUtil.getInstance().setHeight(120),
-              decoration: ShapeDecoration(
-                // color: red,
-                image: DecorationImage(
-                  image: NetworkImage(
-                    songsList[index].picUrl,
+      Container(
+        padding: EdgeInsets.only(left: ScreenUtil.getInstance().setWidth(25), right: ScreenUtil.getInstance().setWidth(25)),
+        child: Column(
+          children: <Widget>[
+            Container(
+              padding: EdgeInsets.only(top: ScreenUtil.getInstance().setWidth(40), bottom: ScreenUtil.getInstance().setWidth(40)),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Text(
+                    '推荐歌单',
+                    style: TextStyle(color: black, fontSize: ScreenUtil.getInstance().setSp(35), fontWeight: FontWeight.bold),
                   ),
-                  fit: BoxFit.fill,
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadiusDirectional.circular(10)
-                )
+                  GestureDetector(
+                    onTap: (){},
+                    child: Container(
+                      alignment: Alignment.center,
+                      width: ScreenUtil.getInstance().setWidth(150),
+                      height: ScreenUtil.getInstance().setHeight(45),
+                      decoration: BoxDecoration(
+                        border: Border.all(color: grey1, width: 0.5),
+                        borderRadius: BorderRadius.all(Radius.circular(40))
+                      ),
+                      child: Text('歌单广场'),
+                    ),
+                  )
+                ],
               ),
+            ),
+            GridView.builder(
+              shrinkWrap: true,
+              itemCount: songsList.length,
+              physics: NeverScrollableScrollPhysics(),
+              
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+                mainAxisSpacing: 10,
+                crossAxisSpacing: 10,
+                childAspectRatio: 0.7,
+              ),
+              itemBuilder: (context, index) {
+                return InkWell(
+                  onTap: (){},
+                  child: Column(
+                    children: <Widget>[
+                      Container(
+                        alignment: Alignment.topLeft,
+                        height: (MediaQuery.of(context).size.width - ScreenUtil.getInstance().setHeight(70))/3,
+                        decoration: ShapeDecoration(
+                          image: DecorationImage(
+                            image: NetworkImage(
+                              songsList[index].picUrl,
+                            ),
+                            fit: BoxFit.fill,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadiusDirectional.circular(5)
+                          )
+                        ),
+                        child: Container(
+                          padding: EdgeInsets.only(top: ScreenUtil.getInstance().setWidth(1), right: ScreenUtil.getInstance().setWidth(8)),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              Icon(
+                                AntdIcons.playCount,
+                                size: ScreenUtil.getInstance().setSp(24),
+                                color: white,
+                              ),
+                              Text(
+                                songsList[index].playCount > 100000000 ? (songsList[index].playCount~/100000000).toString() + '亿' : songsList[index].playCount > 10000 ? (songsList[index].playCount~/10000).toString() + '万' :  songsList[index].playCount,
+                                style: TextStyle(
+                                  color: white,
+                                  fontSize: ScreenUtil.getInstance().setSp(24)
+                                ),
+                              )
+                            ],
+                          ),
+                        )
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(top: ScreenUtil.getInstance().setHeight(10)),
+                        child: Text(
+                          songsList[index].name,
+                          softWrap: true,
+                          textAlign: TextAlign.left,
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 2,
+                          style: TextStyle(fontSize: ScreenUtil.getInstance().setSp(26)),
+                        ),
+                      ),
+                    ],
+                  )
+                );
+              },
             )
-          );
-        },
-      )
+          ],
+        ),
+      )      
     );
   }
 
@@ -306,5 +373,9 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       songsList = list.result;
     });
+  }
+
+  void _getNewAlbum() async{
+
   }
 }

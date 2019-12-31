@@ -75,7 +75,7 @@ class _IndexState extends State<Index> {
             icon: Icon(AntdIcons.account, color: _defaultColor),
             activeIcon: Icon(AntdIcons.account, color: red),
             title: Text('账号', style: TextStyle(
-              color: _currentIndex != 3 ? _defaultColor : red
+              color: _currentIndex != 4 ? _defaultColor : red
             ))
           )
       ]),
